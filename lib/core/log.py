@@ -73,9 +73,11 @@ class otcolor:
 
         if name == 'nt':
             exec(wincode)
+            global ntcolor
             self.color = ntcolor()
         else:
             exec(otcode)
+            global otcolor
             self.color = otcolor()
 
     def _print(self,msg,color):
@@ -86,16 +88,16 @@ class otcolor:
 
     def critical(self,msg):
         self.color.cprint(msg, RED, 0)
-    
+
     def security_note(self,msg,k=''):
         self.color.cprint(msg, CYAN, 0)
-    
+
     def security_warning(self,msg,k=''):
         self.color.cprint(msg, YELLOW, 0)
-    
+
     def security_hole(self,msg,k=''):
         self.color.cprint(msg, RED, 0)
-    
+
     def security_info(self,msg,k=''):
         self.color.cprint(msg, GREEN, 0)
 

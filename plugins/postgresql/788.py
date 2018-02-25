@@ -36,13 +36,13 @@ def getauth(s,username,password):
     except:
         pass
     return "baduser",-1
-            
 
 
-        
+
+
 def md5(data):
     return hashlib.md5(data).hexdigest()
-  
+
 def makeauth(username,password,key):
     return 'md5'+md5(md5(password+username)+key)
 
@@ -53,7 +53,7 @@ def sendauth(s,auth):
     authstye="\x70\x00\x00\x00\x28"
     auth=authstye+auth+"\x00"
     try:
-        s.sendall(auth)         
+        s.sendall(auth)
         data=s.recv(1024)
         if data[0]=="R" and data[5:9]=="\x00\x00\x00\x00":
             return True
@@ -65,11 +65,11 @@ def createsocket(ip,port):
     for x in range(10):
         try:
             s = socket.socket()
-            s.connect((ip,port))        
+            s.connect((ip,port))
             return s
         except:
             pass
-    
+
 def assign(service, arg):
     if service == "postgresql":
         return True, arg,5432
@@ -83,12 +83,12 @@ def audit(args):
         s.connect((ip,port))
         pass_list = util.load_password_dict(
             ip,
-            userfile='database/mysql_user.txt', 
+            userfile='database/mysql_user.txt',
             passfile='database/mysql_pass.txt',
             mix=True,
             userlist=['postgres:postgres','postgres:root','postgres'],
             )
-        
+
         for username,password in pass_list:
             if username in baduser:
                 continue
@@ -113,12 +113,10 @@ def audit(args):
                 baduser.append(username)
             s.close()
             s = createsocket(ip,port)
-    except Exception,e:
+    except Exception as e:
         pass
         s.close()
 
 if __name__ == '__main__':
     from dummy import *
     audit(assign('postgresql', ('192.168.0.132',5432))[1])
-
-

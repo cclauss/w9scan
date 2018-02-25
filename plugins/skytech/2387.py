@@ -64,3 +64,6 @@ def audit(arg):
     pattern = 'OnMouseOver="JavaScript:this.className=\'DG_Over\'"'
     if (pattern in res_true) and (pattern not in res_false):
         security_hole('SQL Injection: ' + url + ' Parameter:Key')
+
+if __name__ == '__main__':
+    from dummy import curl, security_hole

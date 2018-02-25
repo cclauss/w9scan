@@ -65,7 +65,6 @@ def audit(arg):
 
 
 if __name__ == '__main__':
-    pass
-
+    from dummy import curl, security_info
 
     # KEY---6eaf26b1043248ae94ca258db5d5b068a610a213aa1d2af703532163d0bd1717---

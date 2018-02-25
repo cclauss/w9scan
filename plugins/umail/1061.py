@@ -16,7 +16,7 @@ def get_path(arg):
             t=temp[i]+'/'
             path+=t
         return path
-    except Exception, e:
+    except Exception as e:
         return False
 
 
@@ -26,7 +26,7 @@ def audit(arg):
     path = get_path(arg)
     if path != False:
         security_info('Physical path:%s'%path)
-        
+
 if __name__ == '__main__':
     from dummy import *
     audit(assign('umail', 'http://oa.shindoo.com:810/')[1])

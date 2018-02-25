@@ -12971,13 +12971,13 @@ def ErrorInfoSearch(body):
                 'at org.jboss.seam.',
                 'at org.apache.tomcat.',
                 'Struts has detected an unhandled exception:',
-                'DatabaseError:',					
+                'DatabaseError:',
                 'SyntaxError: Unexpected token ',
                 'SyntaxError: Unexpected identifier',
                 'SyntaxError: Unexpected number',
-                'SyntaxError: Unexpected end of input',            
+                'SyntaxError: Unexpected end of input',
                 'SQLite3::SQLException:',
-                'System.Data.SqlClient.SqlException:',	
+                'System.Data.SqlClient.SqlException:',
                 'ODBC Microsoft Access Driver',
                 'ODBC SQL Server Driver',
                 'supplied argument is not a valid MySQL result',
@@ -13022,7 +13022,7 @@ def ErrorInfoSearch(body):
                 'Microsoft VBScript runtime error',
                 'Fatal error',
                 'Invalid multibyte sequence in argument',
-                'Incorrect syntax near',    
+                'Incorrect syntax near',
                 'Invalid Path Character',
                 'Invalid procedure call or argument',
                 'SqlException',
@@ -13053,7 +13053,7 @@ def ErrorInfoSearch(body):
                 'missing expression',
                 'server object error',
                 'supplied argument is not a valid MySQL result resource',
-                'PostgreSQL query failed',    
+                'PostgreSQL query failed',
                 'Must declare the scalar variable',
                 'Invalid column name',
                 'unterminated quoted string at or near',
@@ -13134,7 +13134,7 @@ def ErrorInfoSearch(body):
 							/(<font\sface=\"Arial\"\ssize=2>Syntax\serror\s(.*)?in\squery\sexpression\s'(.*)\.<\/font>)/,
 							/(<b>Warning<\/b>:\s\spg_exec\(\)\s\[\<a\shref='function.pg\-exec\'\>function\.pg-exec\<\/a>\]\:\sQuery failed:\sERROR:\s\ssyntax error at or near \&quot\;\\\&quot; at character \d+ in\s<b>.*<\/b>)/,
 							/(System\.Data\.OleDb\..*)/,
-							/(System\.InvalidOperationException.*)/,	
+							/(System\.InvalidOperationException.*)/,
 							/(Data type mismatch in criteria expression|Could not update; currently locked by user '.*?' on machine '.*?')/,
 							/(<font style="COLOR: black; FONT: 8pt\/11pt verdana">\s+(\[Macromedia\]\[SQLServer\sJDBC\sDriver\]\[SQLServer\]|Syntax\serror\sin\sstring\sin\squery\sexpression\s))/,
 							/(Unclosed\squotation\smark\safter\sthe\scharacter\sstring\s'[^']*')/,
@@ -13249,6 +13249,8 @@ def html2text(body, head=''):
 
 
 if __name__ == '__main__':
+    from dummy import _G
+
     # print load_password_dict('vop.baidu.com', 'database/mssql_user.txt', 'database/mssql_pass.txt')
     # for i in range(2):
     #     print get_fuzzpage('http://tu.6.cn/user/login~')

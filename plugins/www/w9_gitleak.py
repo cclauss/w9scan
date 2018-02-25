@@ -11,3 +11,6 @@ def audit(arg):
 
     if '[remote "origin"]' in body:
         security_hole(" git leak:" + arg + target_url)
+
+if __name__ == '__main__':
+    from dummy import hackhttp, security_hole

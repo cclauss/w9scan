@@ -6,9 +6,9 @@
 ''''
 D-Link 路由器的后门，可以不用输入用户名和密码直接登录进管理页面
 
-Simply by configuring your browser's User Agent setting to "xmlset_roodkcableoj28840ybtide", 
+Simply by configuring your browser's User Agent setting to "xmlset_roodkcableoj28840ybtide",
 you could skip the router's login page and thus administer the router without knowing the password.
-Affected models included 
+Affected models included
 
 DIR-100, DIR-120, DI-524, DI-524UP, DI-604S, DI-604UP, DI-604 +, TM-G5240, BRL-04R, BRL-04UR,
 BRL-04CW, BRL-04FWU.
@@ -51,7 +51,7 @@ def doGet(host,port):
         data=s.recv(1024)
         if 'Home/h_wizard.htm' in data:
             security_hole('D-Link Router Backdoor: http://%s/'%(host_port))
-    except Exception,e:
+    except Exception as e:
         pass
     finally:
         s.close()

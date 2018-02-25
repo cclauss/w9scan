@@ -16,11 +16,11 @@ def audit(arg):
 
     protocol = None
     version=None
-    
+
     us=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     socket.setdefaulttimeout(5)
     try:
-        #if want to attack change 
+        #if want to attack change
         #payload=get_dos_payload()
         payload=get_query_payload()
         us.sendto(payload,(host,port))
@@ -30,7 +30,7 @@ def audit(arg):
         version=re.sub(r'[^a-zA-Z0-9.\-\_]', '', version)
         security_note('udp/53=>[%s];Ver =>%s'%(protocol,version))
         guessDos(version)
-    except Exception, e:
+    except Exception as e:
         pass
 
 
@@ -126,7 +126,7 @@ def getVersion(data,payload):
         return False
     if (ord(data[3])&0x0F)!=0:
         return False
-    
+
     i=12
     #skip query name
     while i<len(data):

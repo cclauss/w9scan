@@ -110,7 +110,7 @@ class httpconpool():
                         host, port, context=context, timeout=self.timeout)
                 con.connect()
                 return con
-            except ssl.SSLError, e:
+            except ssl.SSLError as e:
                 # print e,protocol
                 pass
         raise Exception('connect err')

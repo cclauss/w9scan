@@ -16,7 +16,7 @@ def sendsnmp(ip,data):
         UDPClient.settimeout(4)
         UDPClient.sendto(data, (ip,161))
         ret,addr = UDPClient.recvfrom(1024)
-    except socket.error,msg:
+    except socket.error as msg:
         #connection reset by peer
         #port not open
         if msg.errno == 10054:
@@ -61,7 +61,7 @@ def audit(ip):
             break
         if code == 1:
             security_warning('snmp community %s:%s' %(info,password))
-    
+
 if __name__ == '__main__':
     from dummy import *
     audit(assign('ip', '192.168.0.1')[1])

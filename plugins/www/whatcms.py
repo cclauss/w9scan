@@ -3,7 +3,8 @@
 # @Author: w8ay
 # @Date:   2017年12月20日 20:39:06
 
-import re,urlparse
+import re
+import urlparse
 from lib.utils.cmsdata import cms_dict
 import hashlib
 
@@ -56,15 +57,15 @@ def isMatching(f_path, cms_name, sign, res, code, host, head):
 
     if isMatch:
         task_push(cms_name, host, target=util.get_url_host(host))
-        security_note(cms_name,'whatcms')
-        #print "%s %s" % (cms_name, host)
+        security_note(cms_name, 'whatcms')
+        # print "%s %s" % (cms_name, host)
         return True
 
     return False
 
 def assign(service, arg):
     if service == "www":
-        return True,makeurl(arg)
+        return True, makeurl(arg)
 
 def audit(arg):
     cms_cache = {}
@@ -109,10 +110,11 @@ def audit(arg):
             break
         for cms_name, sign in cms_cache[f_path]:
             code, head, res = _cache(arg + f_path)
-            isMatch =isMatching(f_path, cms_name, sign, res, code, arg, head)
+            isMatch = isMatching(f_path, cms_name, sign, res, code, arg, head)
             if isMatch:
                 break
 
 if __name__ == '__main__':
-    #print assign("www","https://blog.hacking8.com/sagasg/zxc.php?asdzxc")
+    from dummy import curl, security_note, util
+    # print assign("www","https://blog.hacking8.com/sagasg/zxc.php?asdzxc")
     audit("https://www.t00ls.net/")

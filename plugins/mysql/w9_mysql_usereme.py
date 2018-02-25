@@ -47,7 +47,7 @@ def audit(arg):
 
 
 if __name__ == '__main__':
-
+    from dummy import ThreadPool, security_note, util
     audit(assign("mysql", ("127.0.0.1", 3306))[1])
 
     # KEY---8c97d8c12ebb049684db59720d39ad8b38b0081d8cc8d022bd7768ab0bc7c699---

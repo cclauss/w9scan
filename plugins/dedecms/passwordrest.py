@@ -12,3 +12,6 @@ def audit(arg):
     if "系统关闭了会员功能" in body:
         return
     security_note("可能存在dede任意用户重置漏洞:https://www.t00ls.net/thread-43689-1-1.html")
+
+if __name__ == '__main__':
+    from dummy import hackhttp, security_note

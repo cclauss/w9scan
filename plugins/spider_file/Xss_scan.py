@@ -12,7 +12,7 @@ def audit(url,html):
     parse = urlparse.urlparse(url)
     if not parse.query:
         return
-    
+
     for path in parse.query.split('&'):
         if '=' not in path:
             continue
@@ -29,10 +29,13 @@ def audit(url,html):
 			'<select autofocus onfocus=alert(1)>',
 			'<textarea autofocus onfocus=alert(1)>',
 			'<keygen autofocus onfocus=alert(1)>',
-			'<video><source onerror="javascript:alert(1)">'		
+			'<video><source onerror="javascript:alert(1)">'
 	    ]
         for payload in XSS_PAYLOAD:
             url_1 = url.replace("%s=%s"%(k,v),"%s=%s"%(k,urlencode(payload)))
             code, head, html, redirect_url, log = hackhttp.http(url_1)
             if payload in html:
                 security_warning(log["request"].replace(os.linesep,'[/br]'),'XSS:' + url_1)
+
+if __name__ == '__main__':
+    from dummy import hackhttp

@@ -92,3 +92,6 @@ def assign(service, arg):
 def audit(arg):
     if checkPortTcp(arg,445):
         check(arg,445,20)
+
+if __name__ == '__main__':
+    from dummy import security_hole

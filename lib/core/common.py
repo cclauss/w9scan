@@ -56,7 +56,7 @@ def getUnicode(value, encoding=None, noneToNull=False):
         while True:
             try:
                 return unicode(value, encoding or "utf8")
-            except UnicodeDecodeError, ex:
+            except UnicodeDecodeError as ex:
                 try:
                     return unicode(value, "utf8")
                 except:
@@ -90,7 +90,7 @@ def makeurl(url):
     if not (url.startswith("http://") or url.startswith("https://")):
         url = prox + url
     url_info = urlparse.urlparse(url)
-    
+
     if url_info.path:
         url = prox + url_info.netloc + url_info.path
         if not url.endswith("/"):

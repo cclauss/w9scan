@@ -27,15 +27,18 @@ def audit(arg):
     password = '<<< %s(un=\'%s\') = %u'
     finish = '->'
     try:
-        t = telnetlib.Telnet(arg,port, timeout=time)
+        t = telnetlib.Telnet(arg, port, timeout=time)
         t.write(user + '\n')
-        t.read_until('password: ')  
+        t.read_until('password: ')
         t.write(password + '\n')
-        str1 =  t.read_until(finish)
+        str1 = t.read_until(finish)
         t.write("?\n")
         str = t.read_until(finish)
         t.close()
         if ('->' in str) and ('exec' in str):
             security_hole(arg)
-    except Exception, e:
+    except Exception as e:
         pass
+
+if __name__ == '__main__':
+    from dummy import security_hole

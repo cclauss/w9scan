@@ -25,13 +25,13 @@ def updateProgram():
         logger.info(debugMsg)
 
         dataToStdout("\r[%s] [INFO] update in progress " % time.strftime("%X"))
-    
+
     try:
         process = subprocess.Popen("git checkout . && git pull %s HEAD" % GIT_REPOSITORY, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=paths.w9scan_ROOT_PATH.encode(locale.getpreferredencoding()))  # Reference: http://blog.stastnarodina.com/honza-en/spot/python-unicodeencodeerror/
         pollProcess(process, True)
         stdout, stderr = process.communicate()
         success = not process.returncode
-    except (IOError, OSError), ex:
+    except (IOError, OSError) as ex:
         success = False
         stderr = getSafeExString(ex)
 
